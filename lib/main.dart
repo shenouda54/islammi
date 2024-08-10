@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-import 'home.dart';
+import 'home/home.dart';
 
 void main() {
   runApp(MyApp());
