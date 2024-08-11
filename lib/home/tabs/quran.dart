@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:isslami/home/sura_details.dart';
 
+import '../../sura_model.dart';
 
 class QuranTub extends StatelessWidget {
-   QuranTub({super.key});
+  QuranTub({super.key});
 
   @override
   List<String> suraNames = [
@@ -122,43 +124,82 @@ class QuranTub extends StatelessWidget {
     "الفلق",
     "الناس"
   ];
+
   Widget build(BuildContext context) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
         Image.asset(
-          "assets/images/ic_quran.png.png",
+          "assets/images/quran_image.png.png",
           height: 227,
         ),
-        Divider(
-          thickness: 3,
-          color: Color(0xffB7935F),
+        Table(
+          border: TableBorder.all(),
+          children: [
+            TableRow(children: [
+              Text(
+                "عدد الآيات",
+                textAlign: TextAlign.center,
+                style: GoogleFonts.elMessiri(
+                    fontSize: 25, fontWeight: FontWeight.w600),
+              ),
+              Text(
+                "إسم السورة",
+                textAlign: TextAlign.center,
+                style: GoogleFonts.elMessiri(
+                    fontSize: 25, fontWeight: FontWeight.w600),
+              ),
+            ],)
+
+          ],
         ),
-        Text(
-          "Syra Name ",
-          textAlign: TextAlign.center,
-        ),
-        Divider(
-          thickness: 3,
-          color: Color(0xffB7935F),
-        ),
+
+
+        // Expanded(
+        //   child: ListView.separated(
+        //       itemBuilder: (context, index) {
+        //         (
+        //           nameSura: suraNames[index],
+        //           index: index,
+        //         );
+        //       },
+        //       separatorBuilder: (context, index) {
+        //         return Divider(
+        //           thickness: 2,
+        //         );
+        //       },
+        //       itemCount: suraNames.length),
+        // )
         Expanded(
           child: ListView.separated(
-              itemBuilder: (context, index) {
-                (
-                  nameSura: suraNames[index],
-                  index: index,
-                );
+            separatorBuilder: (context,index){
+              return Divider(
+                color: Color(0xffB7935F),
+                indent: 60,
+                endIndent: 60,
+              );
+            },
+            itemBuilder: (context,index){
+            return InkWell(
+              onTap: (){
+                Navigator.pushNamed(context, SuraDetailsScreen.routeName,
+                arguments: SuraModel(suraNames[index], index));
               },
-              separatorBuilder: (context, index) {
-                return Divider(
+              child: Text(
+                suraNames[index],
+                textAlign: TextAlign.center,
+                style: GoogleFonts.inder(
+                fontSize: 25,
+                fontWeight: FontWeight.w400,
+              ),
+              ),
+            );
+          },
+            itemCount: suraNames.length,),
+        ),
 
-                  thickness: 2,
-                );
-              },
-              itemCount: suraNames.length),
-        )
       ],
+
     );
   }
 }
