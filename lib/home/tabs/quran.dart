@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:isslami/home/sura_details.dart';
+import 'package:isslami/sura_details.dart';
 
 import '../../sura_model.dart';
 
@@ -195,7 +195,8 @@ class QuranTub extends StatelessWidget {
               ),
             );
           },
-            itemCount: suraNames.length,),
+            itemCount: suraNames.length,
+          ),
         ),
 
       ],
