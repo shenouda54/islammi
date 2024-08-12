@@ -34,10 +34,11 @@ class _HomeScreenState extends State<HomeScreen> {
             centerTitle: true,
             backgroundColor: Colors.transparent,
             title: Text(
-              "Islami",
+              "إسلامي",
               style: GoogleFonts.elMessiri(
                 fontSize: 30,
                 fontWeight: FontWeight.w700,
+                color: Colors.black,
               ),
             ),
           ),
@@ -57,27 +58,27 @@ class _HomeScreenState extends State<HomeScreen> {
                   icon: ImageIcon(AssetImage("assets/images/ic_quran.png.png")),
                   label: "",
                   backgroundColor: Color(0xffB7935F),
-                ),
+                ),//quranicon
                 BottomNavigationBarItem(
                   icon: ImageIcon(AssetImage("assets/images/ic_sebha.png.png")),
                   label: "",
                   backgroundColor: Color(0xffB7935F),
-                ),
+                ),//sebhaicon
                 BottomNavigationBarItem(
-                  icon: ImageIcon(AssetImage("assets/images/radio_image.png.png")),
+                  icon: ImageIcon(AssetImage("assets/images/ic_radio.png.png")),
                   label: "",
                   backgroundColor: Color(0xffB7935F),
-                ),
+                ),//radioicon
                 BottomNavigationBarItem(
-                  icon: ImageIcon(AssetImage("assets/images/ahadeth_image.png.png")),
+                  icon: ImageIcon(AssetImage("assets/images/ic_ahadeth.png.png")),
                   label: "",
                   backgroundColor: Color(0xffB7935F),
-                ),
+                ),//ahadethicon
                 BottomNavigationBarItem(
                   icon: Icon(Icons.settings),
                   label: "",
                   backgroundColor: Color(0xffB7935F),
-                ),
+                ),//settingicon
               ],
           ),
           body: tabs[selectedIndex],
