@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:isslami/ahadeth_model.dart';
+import 'package:isslami/provider/my_provider.dart';
+import 'package:provider/provider.dart';
 
 class HadethDetailsScreen extends StatelessWidget {
   static const String routeName = 'HadethScreen';
@@ -10,15 +12,18 @@ class HadethDetailsScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var model = ModalRoute.of(context)?.settings.arguments as HadethModel;
-    return Stack(
-      children: [
+    var provider = Provider.of<MyProvider>(context);
+
+    return Stack(children: [
       Image.asset(
-      "assets/images/background.png.png",
-      width: double.infinity,
-      height: double.infinity,
-      fit: BoxFit.fill,
-    ),
-       Scaffold(
+        provider.mode == ThemeMode.light
+            ? "assets/images/background.png.png"
+            : "assets/images/backgrounddark.png.png",
+        width: double.infinity,
+        height: double.infinity,
+        fit: BoxFit.fill,
+      ),
+      Scaffold(
         backgroundColor: Colors.transparent,
         appBar: AppBar(
           centerTitle: true,
@@ -31,25 +36,25 @@ class HadethDetailsScreen extends StatelessWidget {
             ),
           ),
         ),
-         body: Card(
-           color: Color(0xffc4b9a3),
-           shape: BorderDirectional(start: BorderSide(width: 1)),
-           margin: EdgeInsets.all(12),
-           child: ListView.builder(
-             itemBuilder: (context, index) {
-               return Text(
-                 model.content[index],
-                 textDirection: TextDirection.rtl,
-                 textAlign: TextAlign.center,
-                 style: GoogleFonts.inder(
-                   fontSize: 25,
-                 ),);
-             },
-             itemCount:model.content.length ,
-           ),
-         ),
+        body: Card(
+          color: Color(0xffc4b9a3),
+          shape: BorderDirectional(start: BorderSide(width: 1)),
+          margin: EdgeInsets.all(12),
+          child: ListView.builder(
+            itemBuilder: (context, index) {
+              return Text(
+                model.content[index],
+                textDirection: TextDirection.rtl,
+                textAlign: TextAlign.center,
+                style: GoogleFonts.inder(
+                  fontSize: 25,
+                ),
+              );
+            },
+            itemCount: model.content.length,
+          ),
+        ),
       ),
-    ]
-    );
+    ]);
   }
 }

@@ -21,6 +21,7 @@ class RadioTub extends StatelessWidget {
             ) ,
             )
 
+
           ],
         ),
         Text("إذاعة القرآن الكريم",
@@ -28,8 +29,13 @@ class RadioTub extends StatelessWidget {
           style:GoogleFonts.elMessiri(
             fontWeight: FontWeight.w600,
             fontSize:  25,
+            height: 4,
+
           ),
         ),
+        Image.asset("assets/images/Group 5.png", width: 205,
+          height: 120,),
+
       ],
 
     );

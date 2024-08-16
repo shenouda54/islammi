@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:isslami/provider/my_provider.dart';
 import 'package:isslami/sura_model.dart';
+import 'package:provider/provider.dart';
 
 class SuraDetailsScreen extends StatefulWidget {
   static const String routeName = "suradetails";
@@ -18,13 +20,16 @@ class _SuraDetailsScreenState extends State<SuraDetailsScreen> {
   @override
   Widget build(BuildContext context) {
     var model = ModalRoute.of(context)?.settings.arguments as SuraModel;
+    var provider = Provider.of<MyProvider>(context);
     if (verses.isEmpty) {
       loadSuraFile(model.index);
     }
     return Stack(
       children: [
         Image.asset(
-          "assets/images/background.png.png",
+          provider.mode == ThemeMode.light
+              ? "assets/images/background.png.png"
+              : "assets/images/backgrounddark.png.png",
           width: double.infinity,
           height: double.infinity,
           fit: BoxFit.fill,
@@ -49,12 +54,13 @@ class _SuraDetailsScreenState extends State<SuraDetailsScreen> {
             child: ListView.builder(
               itemBuilder: (context, index) {
                 return Text(
-                 " ${verses[index]}(${index+1})",
+                  " ${verses[index]}(${index + 1})",
                   textDirection: TextDirection.rtl,
                   textAlign: TextAlign.center,
                   style: GoogleFonts.inder(
-                  fontSize: 25,
-                ),);
+                    fontSize: 25,
+                  ),
+                );
               },
               itemCount: verses.length,
             ),
