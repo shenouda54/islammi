@@ -22,7 +22,10 @@ class _AhadthTubState extends State<AhadthTub> {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
+        SizedBox(height: 80,),
+
         Image.asset(
+
           "assets/images/ahadeth_image.png.png",
           height: 227,
         ),

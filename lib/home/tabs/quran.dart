@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:isslami/my_theme_data.dart';
 import 'package:isslami/sura_details.dart';
 
 import '../../sura_model.dart';
@@ -129,6 +130,8 @@ class QuranTub extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
+        SizedBox(height: 80,),
+
         Image.asset(
           "assets/images/quran_image.png.png",
           height: 227,
@@ -136,24 +139,24 @@ class QuranTub extends StatelessWidget {
         Table(
           border: TableBorder.all(),
           children: [
-            TableRow(children: [
-              Text(
-                "عدد الآيات",
-                textAlign: TextAlign.center,
-                style: GoogleFonts.elMessiri(
-                    fontSize: 25, fontWeight: FontWeight.w600),
-              ),
-              Text(
-                "إسم السورة",
-                textAlign: TextAlign.center,
-                style: GoogleFonts.elMessiri(
-                    fontSize: 25, fontWeight: FontWeight.w600),
-              ),
-            ],)
+            TableRow(
+              children: [
+                Text(
+                  "إسم السورة",
+                  textAlign: TextAlign.center,
+                  style: Theme.of(context).textTheme.bodyMedium,
+                ),
 
+                // Text(
+                //   "إسم السورة",
+                //   textAlign: TextAlign.center,
+                //   style: GoogleFonts.elMessiri(
+                //       fontSize: 25, fontWeight: FontWeight.w600),
+                // ),
+              ],
+            )
           ],
         ),
-
 
         // Expanded(
         //   child: ListView.separated(
@@ -172,35 +175,33 @@ class QuranTub extends StatelessWidget {
         // )
         Expanded(
           child: ListView.separated(
-            separatorBuilder: (context,index){
+            separatorBuilder: (context, index) {
               return Divider(
-                color: Color(0xffB7935F),
-                indent: 60,
-                endIndent: 60,
+                indent: 90,
+                endIndent: 90,
+                thickness: 1,
               );
             },
-            itemBuilder: (context,index){
-            return InkWell(
-              onTap: (){
-                Navigator.pushNamed(context, SuraDetailsScreen.routeName,
-                arguments: SuraModel(suraNames[index], index));
-              },
-              child: Text(
-                suraNames[index],
-                textAlign: TextAlign.center,
-                style: GoogleFonts.inder(
-                fontSize: 25,
-                fontWeight: FontWeight.w400,
-              ),
-              ),
-            );
-          },
+            itemBuilder: (context, index) {
+              return InkWell(
+                onTap: () {
+                  Navigator.pushNamed(context, SuraDetailsScreen.routeName,
+                      arguments: SuraModel(suraNames[index], index));
+                },
+                child: Text(
+                  suraNames[index],
+                  textAlign: TextAlign.center,
+                  style: GoogleFonts.inder(
+                    fontSize: 25,
+                    fontWeight: FontWeight.w400,
+                  ),
+                ),
+              );
+            },
             itemCount: suraNames.length,
           ),
         ),
-
       ],
-
     );
   }
 }
